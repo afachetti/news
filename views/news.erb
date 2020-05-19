@@ -21,9 +21,28 @@
     <title>News</title>
   </head>
   <body>
+    <div class="jumbotron">
+        <h1 class="display-4">Wildcat Weekly</h1>
+        <p class="lead">The latest Weather & Top News Stories</p>
+        <hr class="my-4">
+    </div>  
 
     <div class="container mt-5">
-      <h1>News</h1>
+      <h1>The News Watch Never Stops!</h1> 
+        <h2> <p> <b> Local Weather </b> </p> </h2>
+        <p> It is currently <%= @temp %> degrees and <%= @weather %> with <%= @wind %> mph of wind </p> 
+        <h2> <p> Extended Forecast: </p> </h2>
+        <% for day in @forecast["daily"] %>
+            <p> On day <%= @dayofweek %>, it will be <%= day["temp"]["day"] %> degrees and <%= day["weather"][0]["description"] %> </p> 
+            <% @dayofweek = @dayofweek + 1 %>
+        <% end %>
+      
+       <h2> <p> <b> Today's Top Headlines </b> </p> </h2>
+       <% for article in @currentnews %>
+                    <h4> <b> <%= article["title"] %> </b></h4>
+                    <p> <%= article["description"] %> <a href=<%= article["url"] %> > source </a> </p>
+            <% end %>
+      </h3> 
     </div>
 
     <!-- Optional JavaScript -->
